@@ -64,7 +64,7 @@
 <aside class="app-sidebar">
    <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image">
       <div>
-         <p class="app-sidebar__user-name">John Doe</p>
+         <p class="app-sidebar__user-name"><?php echo $_SESSION["login_name"].' '.$_SESSION["login_surname"];?></p>
          <p class="app-sidebar__user-designation">Frontend Developer</p>
       </div>
    </div>

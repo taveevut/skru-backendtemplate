@@ -17,11 +17,14 @@ if ( $do_what == 'insert' ) {
    $stm->bindParam( "province", $_POST['province'] );
    $stm->bindParam( "zip_code", $_POST['zip_code'] );
    if ( $stm->execute() ) {
-      echo "บันทึกข้อมูลได้สำเร็จ";
+      $_SESSION['alt']['message'] = '<strong>บันทึกข้อมูลได้สำเร็จ!</strong> ระบบทำการบันทึกข้อมูลได้สำเร็จ';
+		$_SESSION['alt']['type'] = 'success';
    } else {
-      echo "เกิดข้อผิดพลาดในการบันทึกข้อมูล กรุณาตรวจสอบใหม่อีกครั้ง !!";
+      $_SESSION['alt']['message'] = '<strong>เกิดข้อผิดพลาด!</strong>เกิดข้อผิดพลาดในระหว่างการแก้ไขข้อมูล กรุณาตรวจสอบใหม่อีกครั้ง';
+		$_SESSION['alt']['type'] = 'danger';
    }
-   // insert data to databse.
+
+   header("Location:./index.php");
 }
 
 if ( $do_what == 'update' ) {
@@ -35,21 +38,28 @@ if ( $do_what == 'update' ) {
    $stm->bindParam( "province", $_POST['province'] );
    $stm->bindParam( "zip_code", $_POST['zip_code'] );
    $stm->bindParam( "id", $_GET['id'] );
+
    if ( $stm->execute() ) {
-      echo "แก้ไขข้อมูลได้สำเร็จ";
+      $_SESSION['alt']['message'] = '<strong>แก้ไขข้อมูลได้สำเร็จ!</strong> ระบบทำการแก้ไขข้อมูลได้สำเร็จ';
+		$_SESSION['alt']['type'] = 'success';
    } else {
-      echo "เกิดข้อผิดพลาดในการแก้ไขข้อมูล กรุณาตรวจสอบใหม่อีกครั้ง !!";
+      $_SESSION['alt']['message'] = '<strong>เกิดข้อผิดพลาด!</strong>เกิดข้อผิดพลาดในระหว่างการแก้ไขข้อมูล กรุณาตรวจสอบใหม่อีกครั้ง';
+		$_SESSION['alt']['type'] = 'danger';
    }
+
+   header("Location:./index.php");
 }
 
 if ( $do_what == 'delete' ) {
    $stm = $db_con->prepare( "DELETE FROM customer WHERE id = :id " );
    $stm->bindParam( ':id', $_GET["id"] );
-   if ( $result = $stm->execute() ) {
-      echo "ลบข้อมูลได้สำเร็จ";
-
-      header( "Location: ./index.php" );
+   if ( $stm->execute() ) {
+      $_SESSION['alt']['message'] = '<strong>ลบข้อมูลได้สำเร็จ!</strong> ระบบทำการลบข้อมูลได้สำเร็จ';
+		$_SESSION['alt']['type'] = 'success';
    } else {
-      echo "ลบข้อมูลไม่สำเร็จ";
+      $_SESSION['alt']['message'] = '<strong>เกิดข้อผิดพลาด!</strong>เกิดข้อผิดพลาดในระหว่างการแก้ไขข้อมูล กรุณาตรวจสอบใหม่อีกครั้ง';
+		$_SESSION['alt']['type'] = 'danger';
    }
+
+   header("Location:./index.php");
 }
