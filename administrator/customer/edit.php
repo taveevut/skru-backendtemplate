@@ -28,18 +28,21 @@
       </div>
       <div class="row">
          <div class="col-md-8">
-            <form action="./actions.php?do=insert" method="POST">
+            <form action="./actions.php?do=update&id=<?php echo $rows["id"];?>" method="POST">
                <div class="tile">
                   <h3 class="tile-title">แก้ไขข้อมูลลูกค้ารหัส #<?php echo $rows["id"];?></h3>
                   <div class="tile-body">
                      <div class="form-row">
                         <div class="form-group col-md-6">
                            <label>อีเมลล์</label>
-                           <input type="email" name="email" value="<?php echo $rows["username"];?>" class="form-control" placeholder="ระบุอีเมลล์" required="">
+                           <input type="email" name="email" value="<?php echo $rows["username"];?>" disabled class="form-control" placeholder="ระบุอีเมลล์" required="">
                         </div>
                         <div class="form-group col-md-6">
                            <label>รหัสผ่าน</label>
-                           <input type="password" name="password" value="<?php echo $rows["password"];?>" class="form-control" placeholder="ระบุรหัสผ่าน" required="">
+                           <input type="password" name="password" value="<?php echo $rows["password"];?>" disabled class="form-control" placeholder="ระบุรหัสผ่าน" required="">
+                           <div class="mt-2">
+                              <a href="#">แก้ไขรหัสผ่าน</a>
+                           </div>
                         </div>
                      </div>
                      <hr>
@@ -79,7 +82,7 @@
                                  5 => "นราธิวาส",
                               );
                               foreach ($province as $index => $value) {?>
-                              <option value="<?php echo $value;?>" <?php if($index == $rows["province"]){echo "selected";}?> >
+                              <option value="<?php echo $index;?>" <?php if($index == $rows["province"]){echo "selected";}?> >
                                  <?php echo $value;?>
                               </option>
                               <?php }?>

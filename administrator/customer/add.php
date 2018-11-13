@@ -73,7 +73,7 @@
                                  5 => "นราธิวาส",
                               );
                               foreach ($province as $index => $value) {?>
-                              <option value="<?php echo $value;?>">
+                              <option value="<?php echo $index;?>">
                                  <?php echo $value;?>
                               </option>
                               <?php }?>
