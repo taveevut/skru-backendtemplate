@@ -31,5 +31,14 @@ if ( $do_what == 'update' ) {
 
 
 if ( $do_what == 'delete' ) {
-   // delete data in database.
+   $stm = $db_con->prepare("DELETE FROM customer WHERE id = :id ");
+   $stm->bindParam(':id', $_GET["id"]);
+   if($result = $stm->execute()){
+      echo "ลบข้อมูลได้สำเร็จ";
+      
+      header("Location: ./index.php");
+   }
+   else{
+      echo "ลบข้อมูลไม่สำเร็จ";
+   }
 }

@@ -76,7 +76,7 @@
                            <td width="1" class="text-center text-nowrap">
                               <a href="#" class="btn btn-light"><i class="fa fa-search-plus" aria-hidden="true"></i> ดูข้อมูลเพิ่มเติม</a>
                               <a href="#" class="btn btn-info"><i class="fa fa-pencil-square" aria-hidden="true"></i> แก้ไข</a>
-                              <a href="./form_actions.php?do=delete&id=<?php echo $rows["id"];?>" class="btn btn-danger"><i class="fa fa-minus-circle" aria-hidden="true"></i> ลบ</a>
+                              <a href="./actions.php?do=delete&id=<?php echo $rows["id"];?>" class="btn btn-danger"><i class="fa fa-minus-circle" aria-hidden="true"></i> ลบ</a>
                            </td>
                         </tr>
                         <?php $n++; }?>

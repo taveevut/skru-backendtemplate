@@ -5,7 +5,7 @@ session_start(); //เรื่มต้น session
  
 $db_host = "localhost";
 $db_user = "root"; //ชื่อuser
-$db_pass = "1234@#+"; //ชื่อรหัสผ่าน
+$db_pass = ""; //ชื่อรหัสผ่าน
 $db_name = "test"; //ชื่อฐานข้อมูล
  
 try{
