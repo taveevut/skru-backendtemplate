@@ -51,7 +51,7 @@
          </ul>
       </li>
       <!-- User Menu-->
-      <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg fa-fw"></i> Taveevut Nakomah</a>
+      <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg fa-fw"></i>  <?php echo $_SESSION["login_name"].' '.$_SESSION["login_surname"];?></a>
          <ul class="dropdown-menu settings-menu dropdown-menu-right">
             <li><a class="dropdown-item" href="#"><i class="fa fa-cog fa-lg"></i> แก้ไขโปรไฟล์</a></li>
             <li><a class="dropdown-item" href="<?php echo site_admin_url('logout.php');?>"><i class="fa fa-sign-out fa-lg"></i> ออกจากระบบ</a></li>
@@ -71,6 +71,7 @@
    <ul class="app-menu">
       <li><a class="app-menu__item active" href="<?php echo site_admin_url('dashboard.php');?>"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
       <li><a class="app-menu__item" href="<?php echo site_admin_url('customer/index.php');?>"><i class="app-menu__icon fa fa-user-circle-o"></i><span class="app-menu__label">ลูกค้า</span></a></li>
+      <li><a class="app-menu__item" href="<?php echo site_admin_url('orders/index.php');?>"><i class="app-menu__icon fa fa-cart-plus"></i><span class="app-menu__label">รายการสั่งซื้อ</span></a></li>
       <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-bars"></i><span class="app-menu__label">Dropdown</span><i class="treeview-indicator fa fa-angle-right"></i></a>
          <ul class="treeview-menu">
             <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Item 1</a></li>
