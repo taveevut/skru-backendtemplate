@@ -58,55 +58,28 @@
                               <th>#</th>
                               <th>ชื่อ-สกุล</th>
                               <th>ที่อยู่อีเมล์</th>
-                              <th>สร้างเมื่อ</th>
+                              <th>ที่อยู่</th>
                               <th class="text-center">จัดการ</th>
                            </tr>
                         </thead>
                         <tbody>
-                           <tr>
-                              <td>1</td>
-                              <td>Mark</td>
-                              <td>Otto@gmail.com</td>
-                              <td>@mdo</td>
-                              <td width="1" class="text-center text-nowrap">
-                                 <a href="#" class="btn btn-light"><i class="fa fa-search-plus" aria-hidden="true"></i> ดูข้อมูลเพิ่มเติม</a>
-                                 <a href="#" class="btn btn-info"><i class="fa fa-pencil-square" aria-hidden="true"></i> แก้ไข</a>
-                                 <a href="#" class="btn btn-danger"><i class="fa fa-minus-circle" aria-hidden="true"></i> ลบ</a>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>2</td>
-                              <td>Jacob</td>
-                              <td>Thornton@gmail.com</td>
-                              <td>@fat</td>
-                              <td>
-                                 <a href="#" class="btn btn-light"><i class="fa fa-search-plus" aria-hidden="true"></i> ดูข้อมูลเพิ่มเติม</a>
-                                 <a href="#" class="btn btn-info"><i class="fa fa-pencil-square" aria-hidden="true"></i> แก้ไข</a>
-                                 <a href="#" class="btn btn-danger"><i class="fa fa-minus-circle" aria-hidden="true"></i> ลบ</a>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>3</td>
-                              <td>Larry</td>
-                              <td>theBird@gmail.com</td>
-                              <td>@twitter</td>
-                              <td>
-                                 <a href="#" class="btn btn-light"><i class="fa fa-search-plus" aria-hidden="true"></i> ดูข้อมูลเพิ่มเติม</a>
-                                 <a href="#" class="btn btn-info"><i class="fa fa-pencil-square" aria-hidden="true"></i> แก้ไข</a>
-                                 <a href="#" class="btn btn-danger"><i class="fa fa-minus-circle" aria-hidden="true"></i> ลบ</a>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>4</td>
-                              <td>Jacob</td>
-                              <td>Thornton@gmail.com</td>
-                              <td>@fat</td>
-                              <td>
-                                 <a href="#" class="btn btn-light"><i class="fa fa-search-plus" aria-hidden="true"></i> ดูข้อมูลเพิ่มเติม</a>
-                                 <a href="#" class="btn btn-info"><i class="fa fa-pencil-square" aria-hidden="true"></i> แก้ไข</a>
-                                 <a href="#" class="btn btn-danger"><i class="fa fa-minus-circle" aria-hidden="true"></i> ลบ</a>
-                              </td>
-                           </tr>
+                        <?php 
+                        $n = 1; 
+                        $stmt = $db_con->prepare("SELECT * FROM customer ORDER BY id DESC");
+                        $stmt->execute();
+                        while ($rows = $stmt->fetch(PDO::FETCH_ASSOC)) {?>
+                        <tr>
+                           <td scope="row"><?php echo $n;?></td>
+                           <td><?php echo $rows["name"];?> <?php echo $rows["surname"];?></td>
+                           <td><?php echo $rows["email"];?></td>
+                           <td><?php echo $rows["address"];?></td>
+                           <td width="1" class="text-center text-nowrap">
+                              <a href="#" class="btn btn-light"><i class="fa fa-search-plus" aria-hidden="true"></i> ดูข้อมูลเพิ่มเติม</a>
+                              <a href="#" class="btn btn-info"><i class="fa fa-pencil-square" aria-hidden="true"></i> แก้ไข</a>
+                              <a href="./form_actions.php?do=delete&id=<?php echo $rows["id"];?>" class="btn btn-danger"><i class="fa fa-minus-circle" aria-hidden="true"></i> ลบ</a>
+                           </td>
+                        </tr>
+                        <?php $n++; }?>
                         </tbody>
                      </table>
                   </div>
